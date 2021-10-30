@@ -142,6 +142,8 @@ cython_debug/
 .vscode
 
 # various
+.sdirs
+.config/discord
 .xsession-errors
 .xsession-errors.old
 .lesshst
