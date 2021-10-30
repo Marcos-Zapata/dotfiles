@@ -1447,11 +1447,10 @@
           "sysPrefix": "/usr",
           "fileHash": "e7332f52578d8a56b2b146ad984c788664c8cdeaed519deb9f6684c51e797cd299e2286e36dbefd77d5efed58764aabf607ee8c28fb458a11e585820ee9d0e10",
           "type": "Unknown",
-          "displayName": "Python 3.9.7 64-bit",
-          "__store": true
+          "displayName": "Python 3.9.7 64-bit"
         }
       },
-      "expiry": 1635706593218
+      "expiry": 1635708480085
     },
     "/usr/bin/python2.interpreter.Details.v7": {
       "data": {

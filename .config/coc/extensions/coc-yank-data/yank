@@ -429,3 +429,5 @@ f9f1968c69b44c77c7e9de728cbe6d33|file:///home/marcosdiario/.bashrc|52|5|V|sh
 	OSH_THEME="powerline"
 46807a65be66358ea8b30b3980b46778|file:///home/marcosdiario/.gitignore|1|4|V|conf
 	# dotfiles
+2d87b40529009d2d0e6208c59f5ac0a4|file:///home/marcosdiario/README.md|2|16|V|markdown
+	![Alt text](relative/screenshots/qtile.jpg?raw=true "qtile")
