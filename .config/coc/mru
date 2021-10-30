@@ -1,4 +1,6 @@
 /home/marcosdiario/.gitignore
+/home/marcosdiario/.config/qtile/config.py
+/home/marcosdiario/README.md
 /home/marcosdiario/.config/alacritty/fonts.yml
 /home/marcosdiario/.config/alacritty/config.yaml
 /home/marcosdiario/.config/alacritty/alacritty.yml
@@ -10,7 +12,6 @@
 /home/marcosdiario/.xprofile
 /home/marcosdiario/Uni/PP/p3/primopar.c
 /sys/devices/pci0000:00/0000:00:08.1/0000:03:00.0/backlight/amdgpu_bl0/brightness
-/home/marcosdiario/.config/qtile/config.py
 /etc/bluetooth/main.conf
 /home/marcosdiario/Uni/PP/p3/tablaPrimos.h
 /home/marcosdiario/Uni/PP/primopar.c
