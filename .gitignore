@@ -170,3 +170,16 @@ go/
 snap/
 snapd/
 yay/
+.Xauthority
+.bash_logout
+.bashrc.pre-oh-my-bash
+.fehbg
+.fehbg
+.gitconfig
+.vim/
+.vscode-oss/
+.LfCache/
+.wget-hsts
+.sdirs
+.dmrc
+.bash_profile
