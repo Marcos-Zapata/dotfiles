@@ -1,0 +1,9 @@
+2021/10/30-01:07:59.774 14ff2 Reusing MANIFEST /home/marcosdiario/.config/discord/Local Storage/leveldb/MANIFEST-000001
+2021/10/30-01:07:59.774 14ff2 Recovering log #3
+2021/10/30-01:07:59.775 14ff2 Reusing old log /home/marcosdiario/.config/discord/Local Storage/leveldb/000003.log 
+2021/10/30-01:30:01.440 14ff2 Level-0 table #5: started
+2021/10/30-01:30:01.444 14ff2 Level-0 table #5: 20354 bytes OK
+2021/10/30-01:30:01.446 14ff2 Delete type=0 #3
+2021/10/30-02:35:01.440 14fe1 Level-0 table #7: started
+2021/10/30-02:35:01.443 14fe1 Level-0 table #7: 11412 bytes OK
+2021/10/30-02:35:01.445 14fe1 Delete type=0 #4

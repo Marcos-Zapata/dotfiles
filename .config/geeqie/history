@@ -1,0 +1,12 @@
+#History lists
+
+[shortcuts]
+".[path](null)"
+"Carpeta de inicio[path]/home/marcosdiario"
+"Escritorio[path]/home/marcosdiario/Desktop"
+"Colecciones[path]/home/marcosdiario/.local/share/geeqie/collections"
+
+[path_list]
+"/home/marcosdiario"
+
+#end

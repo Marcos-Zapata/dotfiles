@@ -1,0 +1,431 @@
+83238d6b5ca7f53c489d52dc962d154f|file:///home/marcosdiario/.config/alacritty/themes/darktooth.yaml|1|14|V|yaml
+	darktooth.yaml
+6e8efbe3a442748b716644025479aab5|file:///home/marcosdiario/.config/nvim/coc-settings.json|2|25|v|json
+	python3
+98defd6ee70dfb1dea416cecdf391f58|file:///home/marcosdiario/.config/nvim/coc-settings.json|2|25|v|json
+	site
+2fc9e51174a78dd5bfc57e8e368590b3|file:///home/marcosdiario/.config/nvim/coc-settings.json|2|25|v|json
+	packages
+ba9159a2371f2b43f56e7acb83749150|file:///home/marcosdiario/.config/nvim/nvim-plugins/plugins.vim|21|11|V|vim
+	    "Temadd
+3015a5cd1c94efa8e7a6d950eecb79dd|file:///home/marcosdiario/.config/nvim/plug-config/coc.vim|1|1|V|vim
+	let g:coc_global_extensions = [
+	    \ 'coc-snippets',
+	    \ 'coc-pairs',
+	    \ 'coc-python',
+	    \ 'coc-prettier',
+	    \ 'coc-vimlsp',
+	    \ 'coc-marketplace',
+	\ ]
+	
+	" TextEdit might fail if hidden is not set.
+	set hidden
+	
+	" Some servers have issues with backup files, see #649.
+	set nobackup
+	set nowritebackup
+	
+	" Give more space for displaying messages.
+	set cmdheight=2
+	
+	" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+	" delays and poor user experience.
+	set updatetime=300
+	
+	" Don't pass messages to |ins-completion-menu|.
+	set shortmess+=c
+	
+	" Always show the signcolumn, otherwise it would shift the text each time
+	" diagnostics appear/become resolved.
+	if has("patch-8.1.1564")
+	  " Recently vim can merge signcolumn and number column into one
+	  set signcolumn=number
+	else
+	  set signcolumn=yes
+	endif
+	
+	" Use tab for trigger completion with characters ahead and navigate.
+	" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+	" other plugin before putting this into your config.
+	inoremap <silent><expr> <TAB>
+	      \ pumvisible() ? "\<C-n>" :
+	      \ <SID>check_back_space() ? "\<TAB>" :
+	      \ coc#refresh()
+	inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+	
+	function! s:check_back_space() abort
+	  let col = col('.') - 1
+	  return !col || getline('.')[col - 1]  =~# '\s'
+	endfunction
+	
+	" Use <c-space> to trigger completion.
+	if has('nvim')
+	  inoremap <silent><expr> <c-space> coc#refresh()
+	else
+	  inoremap <silent><expr> <c-@> coc#refresh()
+	endif
+	
+	" Make <CR> auto-select the first completion item and notify coc.nvim to
+	" format on enter, <cr> could be remapped by other vim plugin
+	inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+	                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+	
+	" Use `[g` and `]g` to navigate diagnostics
+	" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+	nmap <silent> [g <Plug>(coc-diagnostic-prev)
+	nmap <silent> ]g <Plug>(coc-diagnostic-next)
+	
+	" GoTo code navigation.
+	nmap <silent> gd <Plug>(coc-definition)
+	nmap <silent> gy <Plug>(coc-type-definition)
+	nmap <silent> gi <Plug>(coc-implementation)
+	nmap <silent> gr <Plug>(coc-references)
+	
+	" Use K to show documentation in preview window.
+	nnoremap <silent> K :call <SID>show_documentation()<CR>
+	
+	function! s:show_documentation()
+	  if (index(['vim','help'], &filetype) >= 0)
+	    execute 'h '.expand('<cword>')
+	  elseif (coc#rpc#ready())
+	    call CocActionAsync('doHover')
+	  else
+	    execute '!' . &keywordprg . " " . expand('<cword>')
+	  endif
+	endfunction
+	
+	" Highlight the symbol and its references when holding the cursor.
+	autocmd CursorHold * silent call CocActionAsync('highlight')
+	
+	" Symbol renaming.
+	nmap <leader>rn <Plug>(coc-rename)
+	
+	" Formatting selected code.
+	xmap <leader>f  <Plug>(coc-format-selected)
+	nmap <leader>f  <Plug>(coc-format-selected)
+	
+	augroup mygroup
+	  autocmd!
+	  " Setup formatexpr specified filetype(s).
+	  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+	  " Update signature help on jump placeholder.
+	  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+435b466794e94cff5ad41d8f8f4402c7|file:///home/marcosdiario/.config/nvim/plug-config/coc.vim|1|1|V|vim
+	augroup end
+	
+	" Applying codeAction to the selected region.
+	" Example: `<leader>aap` for current paragraph
+	xmap <leader>a  <Plug>(coc-codeaction-selected)
+	nmap <leader>a  <Plug>(coc-codeaction-selected)
+	
+	" Remap keys for applying codeAction to the current buffer.
+	nmap <leader>ac  <Plug>(coc-codeaction)
+	" Apply AutoFix to problem on the current line.
+	nmap <leader>qf  <Plug>(coc-fix-current)
+	
+	" Map function and class text objects
+	" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+	xmap if <Plug>(coc-funcobj-i)
+	omap if <Plug>(coc-funcobj-i)
+	xmap af <Plug>(coc-funcobj-a)
+	omap af <Plug>(coc-funcobj-a)
+	xmap ic <Plug>(coc-classobj-i)
+	omap ic <Plug>(coc-classobj-i)
+	xmap ac <Plug>(coc-classobj-a)
+	omap ac <Plug>(coc-classobj-a)
+	
+	" Remap <C-f> and <C-b> for scroll float windows/popups.
+	if has('nvim-0.4.0') || has('patch-8.2.0750')
+	  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+	  nnorema <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+	  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+	  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+	  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+	  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+	endif
+	
+	" Use CTRL-S for selections ranges.
+	" Requires 'textDocument/selectionRange' support of language server.
+	nmap <silent> <C-s> <Plug>(coc-range-select)
+	xmap <silent> <C-s> <Plug>(coc-range-select)
+	
+	" Add `:Format` command to format current buffer.
+	command! -nargs=0 Format :call CocAction('format')
+	
+	" Add `:Fold` command to fold current buffer.
+	command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+	
+	" Add `:OR` command for organize imports of the current buffer.
+	command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+	
+	" Add (Neo)Vim's native statusline support.
+	" NOTE: Please see `:h coc-status` for integrations with external plugins that
+	" provide custom statusline: lightline.vim, vim-airline.
+	set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+	
+	" Mappings for CoCList
+	" Show all diagnostics.
+	nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+	" Manage extensions.
+	nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+	" Show commands.
+	nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+	" Find symbol of current document.
+	nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+	" Search workspace symbols.
+	nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+	" Do default action for next item.
+	nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+	" Do default action for previous item.
+	nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+	" Resume latest coc list.
+	nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+	p
+808c9608d24030b6e093ac8aa306efa3|file:///home/marcosdiario/.config/nvim/general/settings.vim|37|1|V|vim
+	/home/marcosdiario/.local/share/virtualenvs/nvim-KVtvIsX1
+42d79a3cf03f45a5bebbbd92eacab735|file:///home/marcosdiario/class.java|1|6|V|java
+	publddic class(){
+2877036dd99a75fdef3c1860bd3fd8ed|file:///home/marcosdiario/.config/nvim/nvim-plugins/plugins.vim|24|1|V|vim
+	    Plugin 'dracula/vim', { 'name': 'dracula' }
+bb08966986ce6b6cf531bb43ce3e2b87|file:///home/marcosdiario/.config/nvim/general/settings.vim|41|28|V|vim
+	let g:gruvbox_contrast_darddk='hard'
+fb429e4746744d8bd2b2eeba7ddebb8a|file:///home/marcosdiario/.config/nvim/general/settings.vim|41|1|V|vim
+	set background=dark
+99280f729279254d706fef490c65c62b|file:///home/marcosdiario/.config/nvim/general/settings.vim|41|2|V|vim
+	dd = "dark"
+f5c4a9912080ada77b8bba869c788904|file:///home/marcosdiario/.config/nvim/general/settings.vim|42|21|v|vim
+	dracula_contrast_dark
+ea5a776bb4450d67889bbf279a9aea2c|file:///home/marcosdiario/.config/nvim/general/settings.vim|42|16|v|vim
+	swdw
+da5dc0a42a6d51b591df642e6fabe295|file:///home/marcosdiario/.config/nvim/general/settings.vim|42|21|V|vim
+	colorscheme draculadd
+73b84ba0fa56d3826167bc2aafd7b75d|file:///home/marcosdiario/.config/nvim/general/settings.vim|42|19|V|vim
+	colorscheme dracula
+a23274000c622895e03987c00ddaf388|file:///home/marcosdiario/.config/nvim/general/settings.vim|42|19|V|vim
+	let g:dracula_contrast_dark='hard'
+5b679e09aa9478160626f079493950e3|file:///home/marcosdiario/.config/nvim/general/settings.vim|40|1|V|vim
+	packadd! dracula
+91505a66787916de0d00b3ba9b0548da|file:///home/marcosdiario/.config/nvim/general/settings.vim|40|1|V|vim
+	syntax enable
+d828f22558f737453d30f0e5d5fa2592|file:///home/marcosdiario/.config/nvim/general/settings.vim|39|3|v|vim
+	Gruvbox 
+eeb019e644d991e462bc86e0ebd30c0a|file:///home/marcosdiario/cursospy/inicio/numeros.py|3|16|V|python
+	cadena = "Hola Mundo"
+fab589b2ecc431a7026487d0124a8658|file:///home/marcosdiario/Uni/PP/p3/primopar.c|55|3|V|c
+	  // Rellenar adecuadamente 
+8374df3b7f627177ac43c7216c0c9da9|file:///home/marcosdiario/Uni/PP/p3/primosec.c|27|1|V|c
+	        printf("El resultado de %d" "%" "%d va a ser : %d \n",numero,primosConocidos[i],numero%primosConocidos[i]);
+f883af528659571cc987b56757c8fe7f|file:///home/marcosdiario/.config/qtile/config.py|227|15|V|python
+	        Screen(
+	  3         top=bar.Bar([
+	  4                 *workspaces(),
+	  5
+	  6                 separator(),
+	  7
+	  8                 powerline('color4', 'dark'),
+	  9
+	 10                 icon(bg="color4", text=' '), # Icon: nf-fa-download
+	 11
+	 >>                 widget.CheckUpdates(
+	 13                     background=colors['color4'],
+	 14                     colour_have_updates=colors['text'],
+	 15                     colour_no_updates=colors['text'],
+	 16                     no_update_string='0',
+	 17                     display_format='{updates}',
+	 18                     update_interval=1800,
+	 19                     custom_command='checkupdates',
+	 20                     ),
+	 21
+	 22                 powerline('color3', 'color4'),
+	 23
+	 24                 icon(bg="color3", text=' '),  # Icon: nf-fa-feed
+	 25
+	 >>                 widget.Net(**base(bg='color3'), interface='wlp1s0'),
+	 27
+	 28                 powerline('color2', 'color3'),
+	 29
+	 >>                 widget.CurrentLayoutIcon(**base(bg='color2'), scale=0.65),
+	 31
+	 >>                 widget.CurrentLayout(**base(bg='color2'), padding=5),
+	 33
+	 34                 powerline('color1', 'color2'),
+	 35
+	 36                 icon(bg="color1",fontsize=17, text=''), # Icon: nf-mdi-calendar_clock
+	 37
+	 >>                 widget.Clock(**base(bg='color1'), format='%d/%m/%Y - %H:%M '),
+14f0ab893fcdf3d097d69962c5e417c2|file:///home/marcosdiario/.config/qtile/config.py|227|3|V|python
+	 41                 powerline('dark', 'color1'),
+6cedc38fed1228202006e758d4d5f46a|file:///home/marcosdiario/.config/qtile/config.py|227|3|V|python
+	 >>                 widget.Systray(background=colors['dark'], padding=5),
+efe4c4f69b5b05516da1d167d102bcee|file:///home/marcosdiario/.config/qtile/config.py|227|3|V|python
+	 45                 separator(),
+21597ed20987864a150c4c0e3f86b9b4|file:///home/marcosdiario/.config/qtile/config.py|227|3|V|python
+	 47             ],25,
+148ef461e05a0ff35de1fa175c4d7552|file:///home/marcosdiario/.config/qtile/config.py|227|3|V|python
+	 48         ),
+6b3c75df8a65413ee7b6c8b82da48af5|file:///home/marcosdiario/.config/qtile/config.py|233|5|V|python
+	    ]
+5e7815d3b18ea6383cf1bd0f4bc1347e|file:///home/marcosdiario/.config/qtile/config.py|233|6|V|python
+	    ),
+259bd37b0ad1f63435cdde3187670951|file:///home/marcosdiario/.config/qtile/config.py|229|17|V|python
+	                widget.GroupBox(),
+ad1a783e346de3553659e74932db72e7|file:///home/marcosdiario/.config/qtile/config.py|229|17|V|python
+	                widget.WindowName()
+3c245c675f29b37ae0b072a961d5e9ac|file:///home/marcosdiario/.config/qtile/config.py|229|18|V|python
+	                 *workspaces(),
+	 42
+bab6a13350b8017dba6060ebef18f7a0|file:///home/marcosdiario/.config/qtile/config.py|234|1|V|python
+	
+	 37                 icon(bg="color4", text=' '), # Icon: nf-fa-download
+df5aa2043b2261aaeb948c49623b729a|file:///home/marcosdiario/.config/qtile/config.py|229|2|V|python
+	                   *workspaces(),
+	                    
+	                   # separator(),
+	
+	                 powerline('color4', 'dark'),
+	 >>                 widget.CheckUpdates(
+	 34                     background=colors['color4'],
+	 33                     colour_have_updates=colors['text'],
+	 32                     colour_no_updates=colors['text'],
+	 31                     no_update_string='0',
+	 30                     display_format='{updates}',
+	 29                     update_interval=1800,
+	 28                     custom_command='checkupdates',
+	 27                     ),
+	 26
+	 25                 powerline('color3', 'color4'),
+	 24
+	 23                 icon(bg="color3", text=' '),  # Icon: nf-fa-feed
+	 22
+	 >>                 widget.Net(**base(bg='color3'), interface='wlp1s0'),
+	 20
+	 19                 powerline('color2', 'color3'),
+	 18
+	 >>                 widget.CurrentLayoutIcon(**base(bg='color2'), scale=0.65),
+	 16
+	 >>                 widget.CurrentLayout(**base(bg='color2'), padding=5),
+	 14
+	 13                 powerline('color1', 'color2'),
+	 12
+	 11                 icon(bg="color1",fontsize=17, text=''), # Icon: nf-mdi-calendar_clock
+	 10
+	 >>                 widget.Clock(**base(bg='color1'), format='%d/%m/%Y - %H:%M '),
+	  8
+	  7
+	  6                 powerline('dark', 'color1'),
+	  5
+	 >>                 widget.Systray(background=colors['dark'], padding=5),
+	  3
+	  2                 separator(),
+dda00ae0b87780f0d03ca9717675684b|file:///home/marcosdiario/.config/qtile/config.py|231|1|v|python
+	10                 
+7b863de17e95d70650014b20cc93ea41|file:///home/marcosdiario/.config/qtile/config.py|233|1|v|python
+	12                 
+ee97078fffff040d65ae33e683b2af30|file:///home/marcosdiario/.config/qtile/config.py|235|1|v|python
+	14                 
+9080446f4ef2440f5675d4692b78b219|file:///home/marcosdiario/.config/qtile/config.py|237|1|v|python
+	>>                 
+53cc546cf4b51388f2a4faab97d043fd|file:///home/marcosdiario/.config/qtile/config.py|238|1|v|python
+	17                     
+a499596ffa35f72af34ac1642e3ab963|file:///home/marcosdiario/.config/qtile/config.py|239|1|v|python
+	18                     
+17411596a954faba2a453ac779be8477|file:///home/marcosdiario/.config/qtile/config.py|240|1|v|python
+	19                     
+588be9202dd7c054d7c640963b0e2563|file:///home/marcosdiario/.config/qtile/config.py|241|1|v|python
+	20                     
+6c0dc8d89176dff81c1847a189c8d054|file:///home/marcosdiario/.config/qtile/config.py|242|1|v|python
+	21                     
+4d9c833d9205e35cc5c3d350538bda94|file:///home/marcosdiario/.config/qtile/config.py|243|1|v|python
+	22                     
+8f15dd045f438763231fe2a164f2738e|file:///home/marcosdiario/.config/qtile/config.py|244|1|v|python
+	23                     
+6272ef29ffd53daeaf21412f45f9b437|file:///home/marcosdiario/.config/qtile/config.py|245|1|v|python
+	24                     
+2dac00ad39ab6c8e03ecbcaaa7156837|file:///home/marcosdiario/.config/qtile/config.py|247|1|v|python
+	26                 
+da34ff3c6376db7b1d9a8b4d4fb8b036|file:///home/marcosdiario/.config/qtile/config.py|249|1|v|python
+	28                 
+dd7eb2fc93ce27020ce8a7b8f1cb52c8|file:///home/marcosdiario/.config/qtile/config.py|253|1|v|python
+	32                 
+d41be5116b9a1d422a82d2f7138d137d|file:///home/marcosdiario/.config/qtile/config.py|259|1|v|python
+	38                 
+24bd4763d28e646d267c187f9be2caa7|file:///home/marcosdiario/.config/qtile/config.py|261|1|v|python
+	40                 
+d60858af708184058968bd4e104aebcb|file:///home/marcosdiario/.config/qtile/config.py|266|1|v|python
+	45                 
+68e814dd2010d108b553b8782bbc8bc8|file:///home/marcosdiario/.config/qtile/config.py|270|1|v|python
+	49                 
+e4addf6bafa10fc7e84a858d4c9edb0b|file:///home/marcosdiario/Uni/PP/p3/primosec.c|27|10|V|c
+	        //printf("resultado = %d  ",primosConocidos[i]);
+fc00cd7c77a968ab4565218e917e390e|file:///home/marcosdiario/Uni/PP/p3/primosec.c|25|13|v|c
+	resultado 
+fb97f2fe10f44aeafc3b72f5d951e8fd|file:///home/marcosdiario/Uni/PP/p3/primosec.c|27|15|v|c
+	numero 
+f3ce2a47cc413ddb4478c987ec76cdd5|file:///home/marcosdiario/Uni/PP/p3/primosec.c|27|15|v|c
+	dividir 
+ed070be982ad6d17bbcdd97840c16262|file:///home/marcosdiario/Uni/PP/p3/primosec.c|27|15|v|c
+	por 
+88de3d323718234845347f79f5fcdeeb|file:///home/marcosdiario/.xprofile|1|1|v|conf
+	#/bin/sh
+fe516d73c082311cfea5099d39111e25|file:///home/marcosdiario/Uni/PP/p3/primopar.c|61|9|V|c
+	    printf("Yo: %d",yo);
+022dd74842baa2d979a76d7731c08a0e|file:///home/marcosdiario/Uni/PP/p3/primopar.c|62|49|V|c
+	    printf("Yo empiezo en el numero %d", numero);
+034ca0fc199b177624432da075797196|file:///home/marcosdiario/Uni/PP/p3/primopar.c|62|4|V|c
+	    if(yo = 0){
+129933033758b2b1390e009b12921439|file:///home/marcosdiario/Uni/PP/p3/primopar.c|62|4|V|c
+	    cotaSerie = numero * numero; //Seguimos manteniendo la cota y se calcula solo con el primero
+	    }
+0c887aaf5be6bd7801a4cb9d6779a2e9|file:///home/marcosdiario/Uni/PP/p3/primopar.c|64|4|V|c
+	    cotaSerie = numero * numero; //Seguimos manteniendo la cota y se calcula solo con el primero
+ea5a1cbe764918679997181a3ea281d3|file:///home/marcosdiario/Uni/PP/p3/primopar.c|64|4|V|c
+	    }
+a35d07491f0ffe7c61d2981abf84e1c3|file:///home/marcosdiario/Uni/PP/p3/primopar.c|68|28|V|c
+	            numero += salto;
+7bb0edd98f22430a03b67f853e83c2ca|file:///home/marcosdiario/Uni/PP/p3/primopar.c|69|8|V|c
+	        
+2125e05896f6318f658cb9b1b3786460|file:///home/marcosdiario/Uni/PP/p3/primopar.c|72|19|V|c
+	        if(yo = 0dd){
+4e1ddba1c31545ee09fb38ae1fd79346|file:///home/marcosdiario/Uni/PP/p3/primopar.c|73|9|V|c
+	        }
+1a4386c8ff6f18694751f3c9ddd28843|file:///home/marcosdiario/Uni/PP/p3/primopar.c|59|21|V|c
+	    int primosEnYo;dd
+82f8b9df69e5904213b57871dfa4cb02|file:///home/marcosdiario/Uni/PP/p3/primopar.c|67|13|v|c
+	primosEnYo
+d0cb19477c32963531f444e752663c3a|file:///home/marcosdiario/Uni/PP/p3/primopar.c|79|18|V|c
+	    printf("\n Primos Calculados => %6i\n",primosTotales);
+22715e2360a1020d878d3b13f0ff0668|file:///home/marcosdiario/Uni/PP/p3/primopar1.c|32|9|V|c
+	  printf(" numero que se va a dividir %d ",numero); 
+f7a5ed1dba7ec0b29bfbd22cb79e0446|file:///home/marcosdiario/Uni/PP/p3/primopar1.c|33|9|V|c
+	    printf(" por %d",primosConocidos[i]);
+ae502c059de3dacd26047a938dbf6f94|file:///home/marcosdiario/Uni/PP/p3/primopar.c|68|33|V|c
+	            printf("%8i",numero);
+4a6de12e2eaf63366b973d38fde1ba44|file:///home/marcosdiario/Uni/PP/p3/primopar.c|85|27|V|c
+	    printf("TOTAL: %d",primosTotales);
+49349504a2b6f314f66281c4703f119f|file:///home/marcosdiario/Uni/PP/p3/primopar.c|81|77|V|c
+	                recibir(numProcesos-1, &numero); // Indicacion de terminacion
+db36c4030ec24c1ad3e561bdfc4fd963|file:///home/marcosdiario/Uni/PP/p3/primopar.c|81|9|V|c
+	        }
+	    }else{
+6c2c85875914a9e52e40fa753915d70f|file:///home/marcosdiario/Uni/PP/p3/primosec.c|25|1|V|c
+	    printf(" //numero que se va a dividir = %d  ",numero);
+cecf7b46f336c8f130a9ed7cb1de1b7d|file:///home/marcosdiario/Uni/PP/p3/primosec.c|26|1|V|c
+	      printf("por %d",primosConocidos[i]);
+714c9ff6e2e07da0608ed1077f322ab2|file:///home/marcosdiario/Uni/PP/p3/primopar.c|66|30|v|c
+	pdrimosTotales
+78adc73baefd8a0e532b3e31d20d5802|file:///home/marcosdiario/Uni/PP/p3/primopar.c|85|56|V|c
+	        recibir(numProcesos-1, &numero); // Indicacion de terminacion
+91ea00728c25a76f440fa2781568d402|file:///home/marcosdiario/Uni/PP/p3/primopar.c|78|13|V|c
+	    printf("Soy el P(%d) y he calculado %d primos",yo,primosEnYo);
+9824640fe8874ded37da3110ad60f216|file:///home/marcosdiario/Uni/PP/p3/primopar.c|66|5|V|c
+	    printf("Empiezo en:%d \n",numero );
+ab8d59df7526eb3684f5ed089902c529|file:///home/marcosdiario/Uni/PP/p3/primopar.c|96|41|V|c
+	  assert (gettimeofday (&t0, NULL) == 0);
+2e0d9cdd77fb0e6e028930b3de3d12c0|file:///home/marcosdiario/.bashrc|6|17|V|sh
+	OSH_THEME="n0qorg"
+f9f1968c69b44c77c7e9de728cbe6d33|file:///home/marcosdiario/.bashrc|52|5|V|sh
+	  git
+28679263913dac7f35b2b32da0f90f0e|file:///home/marcosdiario/.bashrc|7|2|V|sh
+	OSH_THEME="powerline"
+46807a65be66358ea8b30b3980b46778|file:///home/marcosdiario/.gitignore|1|4|V|conf
+	# dotfiles

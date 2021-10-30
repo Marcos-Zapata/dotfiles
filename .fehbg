@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-fill '/home/marcosdiario/.config/qtile/fondos/fondo2.jpg' 
